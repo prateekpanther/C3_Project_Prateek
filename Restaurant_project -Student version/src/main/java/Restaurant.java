@@ -72,5 +72,14 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+    public int billCalculator(List<String> name){
 
+        int totalBill = 0;
+        for(int itemCounter=0;itemCounter<name.size();itemCounter++){
+            Item itemSelected = findItemByName(name.get(itemCounter));
+            totalBill += itemSelected.getPrice();
+        }
+        return totalBill;
+
+    }
 }
