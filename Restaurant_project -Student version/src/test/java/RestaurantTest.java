@@ -4,7 +4,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.lang.reflect.Array;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
@@ -86,4 +89,24 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    //<<<<<<<<<<<<<<<<<<<<<<<TDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+
+    public void display_total_cost_to_customer_of_388_for_the_2_items_selected_from_the_restaurant_menu(){
+
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Gulab Jamun",150);
+
+        List<String> order=new ArrayList<String>();
+        order.add("Sweet corn soup");
+        order.add("Vegetable lasagne");
+
+        int totalBillForCustomer=restaurant.billCalculator();
+         assertEquals(388,totalBillForCustomer);
+
+    //<<<<<<<<<<<<<<<<<<<<<<<TDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 }
